@@ -2,34 +2,32 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class BeatButton : MonoBehaviour
+public class BeatButtonUI : MonoBehaviour
 {
     public Sprite mSpriteNormal = null;
     public Sprite mSpritePressed = null;
-    public UnityEvent mFunction = null;
 
-    private SpriteRenderer mSpriteRenderer = null;
+    private Image mImage = null;
 
     public void PointEnter()
     {
-        this.mFunction.Invoke();
-
         this.ChangeSpriteAsync();
     }
 
     private void Awake()
     {
-        this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
+        this.mImage = this.GetComponent<Image>();
     }
 
     private async void ChangeSpriteAsync()
     {
-        this.mSpriteRenderer.sprite = this.mSpritePressed;
+        this.mImage.sprite = this.mSpritePressed;
 
         await Task.Delay(500);
 
-        this.mSpriteRenderer.sprite = this.mSpriteNormal;
+        this.mImage.sprite = this.mSpriteNormal;
     }
 }

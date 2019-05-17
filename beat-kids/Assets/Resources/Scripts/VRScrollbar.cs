@@ -9,7 +9,6 @@ using UnityEngine.Events;
 public class VRScrollbar : MonoBehaviour
 {
     public Scrollbar mScrollbar = null;
-    public UnityEvent mFunction = null;
 
     private bool mIsGazed = false;
 
@@ -49,6 +48,6 @@ public class VRScrollbar : MonoBehaviour
 
     private void DoFunction()
     {
-        this.mFunction.Invoke();
+        ;
     }
 }

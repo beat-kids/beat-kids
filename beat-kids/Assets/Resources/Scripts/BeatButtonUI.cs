@@ -11,23 +11,36 @@ public class BeatButtonUI : MonoBehaviour
     public Sprite mSpritePressed = null;
 
     private Image mImage = null;
+    private BeatLaneUI mLane = null;
 
     public void PointEnter()
     {
         this.ChangeSpriteAsync();
+        this.CheckNote();
     }
 
     private void Awake()
     {
         this.mImage = this.GetComponent<Image>();
+        this.mLane = this.transform.parent.GetComponent<BeatLaneUI>();
     }
 
     private async void ChangeSpriteAsync()
     {
         this.mImage.sprite = this.mSpritePressed;
 
-        await Task.Delay(500);
+        await Task.Delay(100);
 
         this.mImage.sprite = this.mSpriteNormal;
+    }
+
+    private void CheckNote()
+    {
+        float distance = this.mLane.GetDistanceToFirst();
+
+        if(distance <= 25.0f)
+        {
+            this.mLane.PopNote();
+        }
     }
 }

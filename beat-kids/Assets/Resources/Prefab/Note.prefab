@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.2509804}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a4b8df2a7eec04468f388386d461c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mLane: {fileID: 0}
+  m_Lane: {fileID: 0}
 --- !u!222 &222134547219116322
 CanvasRenderer:
   m_ObjectHideFlags: 1

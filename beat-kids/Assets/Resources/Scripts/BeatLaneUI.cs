@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BeatLaneUI : MonoBehaviour
 {
     public float m_RotateAngle = 0.0f;
+    public GameManager m_GameManager = null;
 
     private Text m_FirstNoteData = null;
     private BeatButtonUI m_Button = null;
@@ -18,6 +19,7 @@ public class BeatLaneUI : MonoBehaviour
         Vector3 positionTarget = positionOrigin + Quaternion.AngleAxis(this.m_RotateAngle, Vector3.forward) * offset;
         _bn.transform.position = positionTarget;
         _bn.m_Lane = this;
+        _bn.m_GameManager = this.m_GameManager;
 
         this.m_Notes.Add(_bn);
     }

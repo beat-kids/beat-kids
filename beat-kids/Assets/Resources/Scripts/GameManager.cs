@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public Object m_ObjectNote = null;
-    public Scrollbar m_HealthPoint = null;
+    public Text m_HPText = null;
+    public float m_HPValue = float.NaN;
+    public float m_Damage = float.NaN;
     public BeatLaneUI[] m_Lanes = null;
 
     private GameObject m_Canvas = null;
@@ -23,10 +26,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GameOver()
+    {
+        SceneManager.LoadScene("Main");
+    }
+
+    public void LoseHP()
+    {
+        this.m_HPValue -= this.m_Damage;
+        if(this.m_HPValue <= 0.0f)
+        {
+            this.GameOver();
+        }
+        else
+        {
+            this.m_HPText.text = this.m_HPValue.ToString("F0");
+        }
+    }
+
     private void Awake()
     {
         this.m_ObjectNote = Resources.Load("Prefab/Note");
         this.m_Canvas = GameObject.Find("Canvas");
         this.m_Random = new System.Random();
+    }
+
+    private void Start()
+    {
+        this.m_HPText.text = this.m_HPValue.ToString("F0");
     }
 }

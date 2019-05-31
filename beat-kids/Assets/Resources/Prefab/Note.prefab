@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Lane: {fileID: 0}
+  m_GameManager: {fileID: 0}
 --- !u!222 &222134547219116322
 CanvasRenderer:
   m_ObjectHideFlags: 1

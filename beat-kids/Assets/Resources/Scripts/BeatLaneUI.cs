@@ -11,6 +11,7 @@ public class BeatLaneUI : MonoBehaviour
     private Text m_FirstNoteData = null;
     private BeatButtonUI m_Button = null;
     private List<BeatNote> m_Notes = null;
+    private BeatLaneUI[] m_Lanes = null;
 
     public void PushNote(BeatNote _bn, float _offset)
     {
@@ -24,13 +25,16 @@ public class BeatLaneUI : MonoBehaviour
         this.m_Notes.Add(_bn);
     }
 
-    public void PopNote()
+    public void PopFirstNotes()
     {
         if(this.m_Notes.Count > 0)
         {
-            BeatNote bn = this.m_Notes[0];
-            this.m_Notes.Remove(bn);
-            Destroy(bn.gameObject);
+            foreach(BeatLaneUI lane in this.m_Lanes)
+            {
+                BeatNote bn = lane.m_Notes[0];
+                lane.m_Notes.Remove(bn);
+                Destroy(bn.gameObject);
+            }
         }
     }
 
@@ -60,6 +64,7 @@ public class BeatLaneUI : MonoBehaviour
         this.m_FirstNoteData = this.GetComponentInChildren<Text>();
         this.m_Button = this.GetComponentInChildren<BeatButtonUI>();
         this.m_Notes = new List<BeatNote>();
+        this.m_Lanes = FindObjectsOfType<BeatLaneUI>();
     }
 
     private void Update()

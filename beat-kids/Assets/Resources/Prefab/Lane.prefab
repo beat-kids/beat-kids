@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2902716789b3f834991b87af16989ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mRotateAngle: 0
+  m_RotateAngle: 0
 --- !u!114 &114415017287457932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,7 +140,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: de3e65763ae803442b5d8f6036ff8674, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8c1d9624e815cb74cb83c3e0c8efd2b9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -189,8 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ac05a5117b93f4c9008de076eb7632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpriteNormal: {fileID: 21300000, guid: de3e65763ae803442b5d8f6036ff8674, type: 3}
-  mSpritePressed: {fileID: 21300000, guid: 8c1d9624e815cb74cb83c3e0c8efd2b9, type: 3}
+  m_SpriteNormal: {fileID: 21300000, guid: 8c1d9624e815cb74cb83c3e0c8efd2b9, type: 3}
+  m_SpritePressed: {fileID: 21300000, guid: de3e65763ae803442b5d8f6036ff8674, type: 3}
 --- !u!222 &222471208696781742
 CanvasRenderer:
   m_ObjectHideFlags: 1

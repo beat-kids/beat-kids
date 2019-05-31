@@ -7,11 +7,11 @@ using UnityEngine.Events;
 
 public class BeatButtonUI : MonoBehaviour
 {
-    public Sprite mSpriteNormal = null;
-    public Sprite mSpritePressed = null;
+    public Sprite m_SpriteNormal = null;
+    public Sprite m_SpritePressed = null;
 
-    private Image mImage = null;
-    private BeatLaneUI mLane = null;
+    private Image m_Image = null;
+    private BeatLaneUI m_Lane = null;
 
     public void PointEnter()
     {
@@ -21,26 +21,26 @@ public class BeatButtonUI : MonoBehaviour
 
     private void Awake()
     {
-        this.mImage = this.GetComponent<Image>();
-        this.mLane = this.transform.parent.GetComponent<BeatLaneUI>();
+        this.m_Image = this.GetComponent<Image>();
+        this.m_Lane = this.transform.parent.GetComponent<BeatLaneUI>();
     }
 
     private async void ChangeSpriteAsync()
     {
-        this.mImage.sprite = this.mSpritePressed;
+        this.m_Image.sprite = this.m_SpritePressed;
 
         await Task.Delay(100);
 
-        this.mImage.sprite = this.mSpriteNormal;
+        this.m_Image.sprite = this.m_SpriteNormal;
     }
 
     private void CheckNote()
     {
-        float distance = this.mLane.GetDistanceToFirst();
+        float distance = this.m_Lane.GetDistanceToFirst();
 
         if(distance <= 25.0f)
         {
-            this.mLane.PopNote();
+            this.m_Lane.PopNote();
         }
     }
 }

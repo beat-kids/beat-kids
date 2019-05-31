@@ -10,6 +10,7 @@ public class BeatButtonUI : MonoBehaviour
     public Sprite m_SpriteNormal = null;
     public Sprite m_SpritePressed = null;
 
+    private float m_Size = float.NaN;
     private Image m_Image = null;
     private BeatLaneUI m_Lane = null;
 
@@ -25,11 +26,21 @@ public class BeatButtonUI : MonoBehaviour
         this.m_Lane = this.transform.parent.GetComponent<BeatLaneUI>();
     }
 
+    private void Start()
+    {
+        RectTransform rectTransform = this.GetComponent<RectTransform>();
+        this.m_Size = rectTransform.rect.width;
+        if (float.IsNaN(BeatNote.g_DistanceLimitToCenter))
+        {
+            BeatNote.g_DistanceLimitToCenter = (Mathf.Abs(rectTransform.position.x) + Mathf.Abs(rectTransform.position.y)) - (this.m_Size / 2.0f);
+        }
+    }
+
     private async void ChangeSpriteAsync()
     {
         this.m_Image.sprite = this.m_SpritePressed;
 
-        await Task.Delay(100);
+        await Task.Delay(150);
 
         this.m_Image.sprite = this.m_SpriteNormal;
     }
@@ -38,9 +49,9 @@ public class BeatButtonUI : MonoBehaviour
     {
         float distance = this.m_Lane.GetDistanceToFirst();
 
-        if(distance <= 25.0f)
+        if(distance <= (this.m_Size / 2.0f))
         {
-            this.m_Lane.PopNote();
+            this.m_Lane.PopFirstNotes();
         }
     }
 }

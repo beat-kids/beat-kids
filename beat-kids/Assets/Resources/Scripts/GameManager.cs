@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Text m_ScoreText = null;
     public int m_Damage = 10;
     public BeatLaneUI[] m_Lanes = null;
+    public GameObject m_MenuPanel = null;
 
     private GameObject m_Canvas = null;
     private System.Random m_Random = null;
@@ -56,6 +57,18 @@ public class GameManager : MonoBehaviour
     {
         this.m_ScoreValue += 100;
         this.m_ScoreText.text = this.m_ScoreValue.ToString();
+    }
+
+    public void OpenMenu()
+    {
+        this.m_MenuPanel.SetActive(true);
+        Time.timeScale = 0.0f;
+    }
+
+    public void CloseMenu()
+    {
+        this.m_MenuPanel.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 
     private void Awake()

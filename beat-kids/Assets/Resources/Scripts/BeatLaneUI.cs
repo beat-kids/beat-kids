@@ -19,6 +19,7 @@ public class BeatLaneUI : MonoBehaviour
         Vector3 offset = new Vector3(0.0f, -1.0f * _offset, 0.0f);
         Vector3 positionTarget = positionOrigin + Quaternion.AngleAxis(this.m_RotateAngle, Vector3.forward) * offset;
         _bn.transform.position = positionTarget;
+        _bn.transform.SetParent(this.transform);
         _bn.m_Lane = this;
         _bn.m_GameManager = this.m_GameManager;
 

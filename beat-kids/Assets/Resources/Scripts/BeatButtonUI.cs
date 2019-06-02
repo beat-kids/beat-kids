@@ -55,6 +55,7 @@ public class BeatButtonUI : MonoBehaviour
         {
             this.m_Lane.PopFirstNotes();
             this.m_GameManager.GetScore();
+            this.m_GameManager.AddCombo();
         }
     }
 }

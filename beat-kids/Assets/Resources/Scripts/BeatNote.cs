@@ -29,13 +29,23 @@ public class BeatNote : MonoBehaviour
         this.m_Display = this.GetComponentInChildren<Text>();
     }
 
-    private void Update()
+    private void Start()
     {
         this.m_Display.text = this.Data;
+    }
 
+    private void Update()
+    {
+        this.CheckPop();
+    }
+
+    private void CheckPop()
+    {
         Vector3 position = this.transform.position;
-        if ((Mathf.Abs(position.x - 0.0f) <= g_DistanceLimitToCenter) &&
-            (Mathf.Abs(position.y - 0.0f) <= g_DistanceLimitToCenter))
+        float x_distance_from_center = Mathf.Abs(position.x - 0.0f);
+        float y_distance_from_center = Mathf.Abs(position.y - 0.0f);
+        if ((x_distance_from_center <= g_DistanceLimitToCenter) &&
+            (y_distance_from_center <= g_DistanceLimitToCenter))
         {
             this.m_Lane.PopNote(this);
             this.m_GameManager.LoseHP();

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Object m_ObjectNote = null;
     public Text m_HPText = null;
     public Text m_ScoreText = null;
+    public Text m_ComboText = null;
     public int m_Damage = 10;
     public BeatLaneUI[] m_Lanes = null;
     public GameObject m_MenuPanel = null;
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     private System.Random m_Random = null;
     private int m_HPValue = 100;
     private int m_ScoreValue = 0;
+    private int m_ComboValue = 0;
     private int m_CountDamage = 0;
 
     public void SpawnNotes()
@@ -37,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     public void LoseHP()
     {
+        this.ClearCombo();
+
         this.m_CountDamage += 1;
         if (this.m_CountDamage == this.m_Lanes.Length)
         {
@@ -57,6 +61,12 @@ public class GameManager : MonoBehaviour
     {
         this.m_ScoreValue += 100;
         this.m_ScoreText.text = this.m_ScoreValue.ToString();
+    }
+
+    public void AddCombo()
+    {
+        this.m_ComboValue += 1;
+        this.m_ComboText.text = this.m_ComboValue.ToString();
     }
 
     public void OpenMenu()
@@ -82,5 +92,12 @@ public class GameManager : MonoBehaviour
     {
         this.m_HPText.text = this.m_HPValue.ToString();
         this.m_ScoreText.text = this.m_ScoreValue.ToString();
+        this.m_ComboText.text = this.m_ComboValue.ToString();
+    }
+
+    private void ClearCombo()
+    {
+        this.m_ComboValue = 0;
+        this.m_ComboText.text = this.m_ComboValue.ToString();
     }
 }

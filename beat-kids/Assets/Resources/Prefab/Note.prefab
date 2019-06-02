@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114599575470618124}
   m_Layer: 5
   m_Name: Note
-  m_TagString: Untagged
+  m_TagString: Note
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

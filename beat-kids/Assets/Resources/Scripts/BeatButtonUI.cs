@@ -10,6 +10,7 @@ public class BeatButtonUI : MonoBehaviour
     public Sprite m_SpriteNormal = null;
     public Sprite m_SpritePressed = null;
 
+    private GameManager m_GameManager = null;
     private float m_Size = float.NaN;
     private Image m_Image = null;
     private BeatLaneUI m_Lane = null;
@@ -24,6 +25,7 @@ public class BeatButtonUI : MonoBehaviour
     {
         this.m_Image = this.GetComponent<Image>();
         this.m_Lane = this.transform.parent.GetComponent<BeatLaneUI>();
+        this.m_GameManager = this.m_Lane.m_GameManager;
     }
 
     private void Start()
@@ -52,6 +54,7 @@ public class BeatButtonUI : MonoBehaviour
         if(distance <= (this.m_Size / 2.0f))
         {
             this.m_Lane.PopFirstNotes();
+            this.m_GameManager.GetScore();
         }
     }
 }

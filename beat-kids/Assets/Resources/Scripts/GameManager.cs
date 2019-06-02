@@ -8,12 +8,15 @@ public class GameManager : MonoBehaviour
 {
     public Object m_ObjectNote = null;
     public Text m_HPText = null;
-    public float m_HPValue = float.NaN;
-    public float m_Damage = float.NaN;
+    public Text m_ScoreText = null;
+    public int m_Damage = 10;
     public BeatLaneUI[] m_Lanes = null;
 
     private GameObject m_Canvas = null;
     private System.Random m_Random = null;
+    private int m_HPValue = 100;
+    private int m_ScoreValue = 0;
+    private int m_CountDamage = 0;
 
     public void SpawnNotes()
     {
@@ -33,15 +36,26 @@ public class GameManager : MonoBehaviour
 
     public void LoseHP()
     {
-        this.m_HPValue -= this.m_Damage;
-        if(this.m_HPValue <= 0.0f)
+        this.m_CountDamage += 1;
+        if (this.m_CountDamage == this.m_Lanes.Length)
         {
-            this.GameOver();
+            this.m_CountDamage = 0;
+            this.m_HPValue -= this.m_Damage;
+            if (this.m_HPValue <= 0)
+            {
+                this.GameOver();
+            }
+            else
+            {
+                this.m_HPText.text = this.m_HPValue.ToString();
+            }
         }
-        else
-        {
-            this.m_HPText.text = this.m_HPValue.ToString("F0");
-        }
+    }
+
+    public void GetScore()
+    {
+        this.m_ScoreValue += 100;
+        this.m_ScoreText.text = this.m_ScoreValue.ToString();
     }
 
     private void Awake()
@@ -53,6 +67,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        this.m_HPText.text = this.m_HPValue.ToString("F0");
+        this.m_HPText.text = this.m_HPValue.ToString();
+        this.m_ScoreText.text = this.m_ScoreValue.ToString();
     }
 }

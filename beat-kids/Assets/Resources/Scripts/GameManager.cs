@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("Main");
     }
 

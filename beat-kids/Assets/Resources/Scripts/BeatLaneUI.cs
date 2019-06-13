@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BeatLaneUI : MonoBehaviour
 {
     public float m_RotateAngle = 0.0f;
+    public ParticleSystem effect = null;
     public GameManager m_GameManager = null;
 
     private Text m_FirstNoteData = null;
@@ -34,6 +35,7 @@ public class BeatLaneUI : MonoBehaviour
             {
                 BeatNote bn = lane.m_Notes[0];
                 lane.m_Notes.Remove(bn);
+                effect.Play();
                 Destroy(bn.gameObject);
             }
         }

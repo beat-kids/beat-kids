@@ -7,12 +7,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public Object m_ObjectNote = null;
-    public Text m_HPText = null;
     public Text m_ScoreText = null;
     public Text m_ComboText = null;
     public int m_Damage = 10;
     public BeatLaneUI[] m_Lanes = null;
     public GameObject m_MenuPanel = null;
+    public GameObject m_ResultPanel = null;
+    public Image m_HPBar = null;
+    public Image gameOver = null;
 
     private GameObject m_Canvas = null;
     private System.Random m_Random = null;
@@ -49,11 +51,16 @@ public class GameManager : MonoBehaviour
             this.m_HPValue -= this.m_Damage;
             if (this.m_HPValue <= 0)
             {
-                this.GameOver();
+                this.m_HPBar.fillAmount = this.m_HPValue * 0.01f;
+                gameOver.transform.position = new Vector3(0, 0, 0);
+                gameOver.GetComponent<Animator>().SetBool("isGameOver", true);
+
+
             }
             else
             {
-                this.m_HPText.text = this.m_HPValue.ToString();
+                this.m_HPBar.fillAmount = this.m_HPValue * 0.01f;
+                //this.m_HPText.text = this.m_HPValue.ToString();
             }
         }
     }
@@ -84,14 +91,13 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        this.m_ObjectNote = Resources.Load("Prefab/Note");
+        this.m_ObjectNote = Resources.Load("Prefab/Komet");
         this.m_Canvas = GameObject.Find("Canvas");
         this.m_Random = new System.Random();
     }
 
     private void Start()
     {
-        this.m_HPText.text = this.m_HPValue.ToString();
         this.m_ScoreText.text = this.m_ScoreValue.ToString();
         this.m_ComboText.text = this.m_ComboValue.ToString();
     }
@@ -100,5 +106,11 @@ public class GameManager : MonoBehaviour
     {
         this.m_ComboValue = 0;
         this.m_ComboText.text = this.m_ComboValue.ToString();
+    }
+
+    public void OpenResultPanel()
+    {
+        this.m_ResultPanel.SetActive(true);
+        Time.timeScale = 0.0f;
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.042956017, g: 0.11614644, b: 0.15665638, a: 1}
+  m_IndirectSpecularColor: {r: 0.04297319, g: 0.11614602, b: 0.156578, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -469,12 +469,12 @@ Prefab:
     - target: {fileID: 224814878573798256, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224964780113295850, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114131028617010262, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
@@ -6351,12 +6351,12 @@ Prefab:
     - target: {fileID: 224814878573798256, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224964780113295850, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114131028617010262, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
@@ -6773,12 +6773,12 @@ Prefab:
     - target: {fileID: 224964780113295850, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224814878573798256, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114131028617010262, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
@@ -11815,7 +11815,7 @@ Prefab:
     - target: {fileID: 114315738138918906, guid: 7c3f02135c8ff6b488902c59baf0a459,
         type: 2}
       propertyPath: m_Text
-      value: "\uBA54\uC778 \uD654\uBA74"
+      value: "\uADF8\uB9CC\uD558\uAE30"
       objectReference: {fileID: 0}
     - target: {fileID: 114310787852685392, guid: 7c3f02135c8ff6b488902c59baf0a459,
         type: 2}
@@ -12407,7 +12407,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectNote: {fileID: 1300227465435538, guid: a70ae00e3089be749865b293654d23e4,
     type: 2}
-  m_HPText: {fileID: 0}
   m_ScoreText: {fileID: 416638510}
   m_ComboText: {fileID: 1284814691}
   m_Damage: 10
@@ -12589,7 +12588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1793548224
 RectTransform:
   m_ObjectHideFlags: 0

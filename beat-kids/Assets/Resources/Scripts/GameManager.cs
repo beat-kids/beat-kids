@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("SelectMusic");
     }
 
     public void LoseHP()
@@ -54,13 +54,10 @@ public class GameManager : MonoBehaviour
                 this.m_HPBar.fillAmount = this.m_HPValue * 0.01f;
                 gameOver.transform.position = new Vector3(0, 0, 0);
                 gameOver.GetComponent<Animator>().SetBool("isGameOver", true);
-
-
             }
             else
             {
                 this.m_HPBar.fillAmount = this.m_HPValue * 0.01f;
-                //this.m_HPText.text = this.m_HPValue.ToString();
             }
         }
     }

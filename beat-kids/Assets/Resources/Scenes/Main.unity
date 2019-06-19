@@ -150,7 +150,7 @@ RectTransform:
   - {fileID: 460562553}
   - {fileID: 1647581780}
   m_Father: {fileID: 1063395742}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -419,7 +419,7 @@ RectTransform:
   - {fileID: 280830054}
   - {fileID: 381217138}
   m_Father: {fileID: 1063395742}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -471,7 +471,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1778417739}
-        m_MethodName: CallModeSelectScene
+        m_MethodName: CallSelectModeScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1317,8 +1317,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 37286153}
   - {fileID: 173170703}
+  - {fileID: 37286153}
   - {fileID: 865504818}
   m_Father: {fileID: 2071153716}
   m_RootOrder: 1
@@ -1625,9 +1625,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb34790b034cca45a593728dbb59bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainLogo: {fileID: 865504819}
-  startButton: {fileID: 173170708}
-  InstructorButton: {fileID: 37286158}
+  m_MainLogo: {fileID: 865504819}
+  m_StartButton: {fileID: 173170708}
+  m_InstructorButton: {fileID: 37286158}
 --- !u!1 &1785482837
 GameObject:
   m_ObjectHideFlags: 0

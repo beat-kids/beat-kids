@@ -7,11 +7,15 @@ using UnityEngine.Events;
 
 public class BeatButtonUI : MonoBehaviour
 {
-    public Sprite mSpriteNormal = null;
-    public Sprite mSpritePressed = null;
+    public Sprite m_SpriteNormal = null;
+    public ParticleSystem m_Effect = null;
+    public Sprite m_SpritePressed = null;
 
-    private Image mImage = null;
-    private BeatLaneUI mLane = null;
+    private GameManager m_GameManager = null;
+    private NoteManager m_NoteManager = null;
+    private float m_Size = float.NaN;
+    private Image m_Image = null;
+    private BeatLaneUI m_Lane = null;
 
     public void PointEnter()
     {
@@ -21,26 +25,40 @@ public class BeatButtonUI : MonoBehaviour
 
     private void Awake()
     {
-        this.mImage = this.GetComponent<Image>();
-        this.mLane = this.transform.parent.GetComponent<BeatLaneUI>();
+        this.m_Image = this.GetComponent<Image>();
+        this.m_Lane = this.transform.parent.GetComponent<BeatLaneUI>();
+        this.m_GameManager = this.m_Lane.m_GameManager;
+        this.m_NoteManager = this.m_GameManager.m_NoteManager;
+    }
+
+    private void Start()
+    {
+        RectTransform rectTransform = this.GetComponent<RectTransform>();
+        this.m_Size = rectTransform.rect.width;
+        if (float.IsNaN(BeatNote.g_DistanceLimitToCenter))
+        {
+            BeatNote.g_DistanceLimitToCenter = (Mathf.Abs(rectTransform.position.x) + Mathf.Abs(rectTransform.position.y)) - (this.m_Size / 2.0f);
+        }
     }
 
     private async void ChangeSpriteAsync()
     {
-        this.mImage.sprite = this.mSpritePressed;
+        this.m_Image.sprite = this.m_SpritePressed;
 
-        await Task.Delay(100);
+        await Task.Delay(150);
 
-        this.mImage.sprite = this.mSpriteNormal;
+        this.m_Image.sprite = this.m_SpriteNormal;
     }
 
     private void CheckNote()
     {
-        float distance = this.mLane.GetDistanceToFirst();
+        float distance = this.m_Lane.GetDistanceToFirst();
 
-        if(distance <= 25.0f)
+        if(distance <= (this.m_Size / 2.0f))
         {
-            this.mLane.PopNote();
+            this.m_Effect.Play();
+            BeatNote bn = this.m_Lane.GetFirstNote();
+            this.m_NoteManager.PopFront(bn.Data);
         }
     }
 }

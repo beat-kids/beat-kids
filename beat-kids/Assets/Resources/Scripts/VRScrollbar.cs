@@ -8,10 +8,10 @@ using UnityEngine.Events;
 
 public class VRScrollbar : MonoBehaviour
 {
-    public Scrollbar mScrollbar = null;
-    public UnityEvent mEvent = null;
+    public Scrollbar m_Scrollbar = null;
+    public UnityEvent m_Event = null;
 
-    private bool mIsGazed = false;
+    private bool m_IsGazed = false;
 
     public void PointEnter()
     {
@@ -20,33 +20,33 @@ public class VRScrollbar : MonoBehaviour
 
     public void PointExit()
     {
-        this.mScrollbar.size = 0;
-        this.mIsGazed = false;
+        this.m_Scrollbar.size = 0;
+        this.m_IsGazed = false;
     }
 
     private async void TimeToActAsync()
     {
-        this.mIsGazed = true;
+        this.m_IsGazed = true;
 
         for(float value = 0.0f; value < 1.0f; value += 0.05f)
         {
-            if (this.mIsGazed == false)
+            if (this.m_IsGazed == false)
             {
-                this.mScrollbar.size = 0.0f;
+                this.m_Scrollbar.size = 0.0f;
                 return;
             }
             else
             {
-                this.mScrollbar.size = value;
+                this.m_Scrollbar.size = value;
                 await Task.Delay((int)(Time.fixedDeltaTime * 1000));
             }
         }
 
-        this.mScrollbar.size = 1.0f;
+        this.m_Scrollbar.size = 1.0f;
 
-        if (this.mEvent != null)
+        if (this.m_Event != null)
         {
-            this.mEvent.Invoke();
+            this.m_Event.Invoke();
         }
     }
 }

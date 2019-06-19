@@ -2,31 +2,104 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public Object mObjectNote = null;
-    public Scrollbar mHP = null;
-    public BeatLaneUI[] mLanes = null;
+    public Text m_ScoreText = null;
+    public Text m_ComboText = null;
+    public int m_Damage = 10;
+    public GameObject m_MenuPanel = null;
+    public GameObject m_ResultPanel = null;
+    public Image m_HPBar = null;
+    public Image m_GameOverImage = null;
+    public NoteManager m_NoteManager = null;
+    public Text m_ResultScoreText = null;
+    public Text m_ResultComboText = null;
+    public Text m_ResultRatioText = null;
 
-    private GameObject mCanvas = null;
-    private System.Random mRandom = null;
+    private int m_HPValue = 100;
+    private int m_ScoreValue = 0;
+    private int m_ComboValue = 0;
+    private int m_CountRight = 0;
+    private int m_CountWrong = 0;
 
-    public void SpawnNotes()
+    public void GameOver()
     {
-        foreach(BeatLaneUI bls in this.mLanes)
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene("SelectMusic");
+    }
+
+    public void OpenResultPanel()
+    {
+        this.m_ResultPanel.SetActive(true);
+        this.m_ResultScoreText.text = this.m_ScoreText.text;
+        this.m_ResultComboText.text = this.m_ComboText.text;
+        this.m_ResultRatioText.text = this.m_CountRight.ToString() + "/" + this.m_CountWrong.ToString();
+        this.UpdateRecord();
+        Time.timeScale = 0.0f;
+    }
+
+    public void LoseHP()
+    {
+        this.m_CountWrong += 1;
+        this.ClearCombo();
+        this.m_HPValue -= this.m_Damage;
+        this.m_HPBar.fillAmount = this.m_HPValue * 0.01f;
+        if (this.m_HPValue <= 0)
         {
-            BeatNote bn = (Instantiate(this.mObjectNote, this.mCanvas.transform) as GameObject).GetComponent<BeatNote>();
-            bn.Data = this.mRandom.Next(1, 10).ToString();
-            bn.Speed = 45.0f;
-            bls.PushNote(bn, 150.0f);
+            m_GameOverImage.gameObject.SetActive(true);
+            m_GameOverImage.GetComponent<Animator>().SetBool("isGameOver", true);
         }
     }
 
-    private void Awake()
+    public void GetScore()
     {
-        this.mObjectNote = Resources.Load("Prefab/Note");
-        this.mCanvas = GameObject.Find("Canvas");
-        this.mRandom = new System.Random();
+        this.m_CountRight += 1;
+        this.m_ScoreValue += 100;
+        this.m_ScoreText.text = this.m_ScoreValue.ToString();
+    }
+
+    public void AddCombo()
+    {
+        this.m_ComboValue += 1;
+        this.m_ComboText.text = this.m_ComboValue.ToString();
+    }
+
+    public void OpenMenu()
+    {
+        this.m_MenuPanel.SetActive(true);
+        Time.timeScale = 0.0f;
+    }
+
+    public void CloseMenu()
+    {
+        this.m_MenuPanel.SetActive(false);
+        Time.timeScale = 1.0f;
+    }
+
+    private void Start()
+    {
+        this.m_ScoreText.text = this.m_ScoreValue.ToString();
+        this.m_ComboText.text = this.m_ComboValue.ToString();
+    }
+
+    private void ClearCombo()
+    {
+        this.m_ComboValue = 0;
+        this.m_ComboText.text = this.m_ComboValue.ToString();
+    }
+
+    private void UpdateRecord()
+    {
+        string mode = PlayerPrefs.GetString("Mode");
+        int index = PlayerPrefs.GetInt("MusicIndex");
+        string difficulty = PlayerPrefs.GetString("Difficulty");
+        string key = mode + "." + index.ToString() + "." + difficulty;
+        int prev = PlayerPrefs.GetInt(key);
+        if (this.m_ScoreValue > prev)
+        {
+            PlayerPrefs.SetInt(key, this.m_ScoreValue);
+        }
     }
 }

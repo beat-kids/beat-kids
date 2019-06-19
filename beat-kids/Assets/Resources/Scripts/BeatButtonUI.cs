@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class BeatButtonUI : MonoBehaviour
 {
     public Sprite m_SpriteNormal = null;
+    public ParticleSystem m_Effect = null;
     public Sprite m_SpritePressed = null;
 
     private GameManager m_GameManager = null;
@@ -55,6 +56,7 @@ public class BeatButtonUI : MonoBehaviour
 
         if(distance <= (this.m_Size / 2.0f))
         {
+            this.m_Effect.Play();
             BeatNote bn = this.m_Lane.GetFirstNote();
             this.m_NoteManager.PopFront(bn.Data);
         }

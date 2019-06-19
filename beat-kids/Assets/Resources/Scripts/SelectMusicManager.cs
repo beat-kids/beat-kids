@@ -15,6 +15,8 @@ public class SelectMusicManager : MonoBehaviour
     private string m_Mode = string.Empty;
     private int m_MusicIndex = -1;
     private string m_Difficulty = string.Empty;
+    private float m_Runtime = 0.0f;
+    private int m_Score = 0;
 
     public void CallSelectModeScene()
     {
@@ -39,11 +41,15 @@ public class SelectMusicManager : MonoBehaviour
     {
         this.m_MusicIndex = _index;
         this.m_Difficulty = string.Empty;
+        this.m_Runtime = 0.0f;
+        this.m_Score = -1;
     }
 
     public void SelectDifficulty(string _level)
     {
         this.m_Difficulty = _level;
+        this.m_Runtime = 0.0f;
+        this.m_Score = 0;
     }
 
     private void Start()
@@ -81,6 +87,24 @@ public class SelectMusicManager : MonoBehaviour
         else
         {
             this.m_DifficultyText.text = "?";
+        }
+
+        if(this.m_Runtime > 0.0f)
+        {
+            this.m_RuntimeText.text = this.m_Runtime.ToString();
+        }
+        else
+        {
+            this.m_RuntimeText.text = "?";
+        }
+
+        if(this.m_Score > -1)
+        {
+            this.m_ScoreText.text = this.m_Score.ToString();
+        }
+        else
+        {
+            this.m_ScoreText.text = "?";
         }
     } 
 }

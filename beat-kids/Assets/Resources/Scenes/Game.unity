@@ -3042,15 +3042,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fca0aecf8994d343aa5bdb9d917964c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ObjectNote: {fileID: 1300227465435538, guid: a70ae00e3089be749865b293654d23e4,
-    type: 2}
   m_ScoreText: {fileID: 416638510}
   m_ComboText: {fileID: 1284814691}
   m_Damage: 10
-  m_Lanes:
-  - {fileID: 706590503}
-  - {fileID: 187106631}
-  - {fileID: 925433022}
   m_MenuPanel: {fileID: 1793548223}
   m_ResultPanel: {fileID: 1802337190}
   m_HPBar: {fileID: 2027590900}
@@ -3115,9 +3109,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae17c813c9b4efe45b92a84b9c056a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_NoteObject: {fileID: 1300227465435538, guid: a70ae00e3089be749865b293654d23e4,
+    type: 2}
   m_GameManager: {fileID: 1652263373}
   m_DataManager: {fileID: 1652263375}
   m_Question: {fileID: 1767353235}
+  m_Lanes:
+  - {fileID: 706590503}
+  - {fileID: 187106631}
+  - {fileID: 925433022}
 --- !u!82 &1652263377
 AudioSource:
   m_ObjectHideFlags: 0

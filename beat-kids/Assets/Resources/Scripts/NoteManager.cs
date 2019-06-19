@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class NoteManager : MonoBehaviour
 {
+    public Object m_NoteObject = null;
     public GameManager m_GameManager = null;
     public DataManager m_DataManager = null;
     public Text m_Question = null;
+    public BeatLaneUI[] m_Lanes = null;
 
-    private BeatLaneUI[] m_Lanes = null;
     private Queue<Problem> m_Problems = null;
-    private Object m_ObjectNote = null;
     private GameObject m_Canvas = null;
 
     public void PopFront(string _data)
@@ -35,8 +35,6 @@ public class NoteManager : MonoBehaviour
 
     private void Awake()
     {
-        this.m_Lanes = this.m_GameManager.m_Lanes;
-        this.m_ObjectNote = this.m_GameManager.m_ObjectNote;
         this.m_Canvas = GameObject.Find("Canvas");
     }
 
@@ -60,7 +58,7 @@ public class NoteManager : MonoBehaviour
             this.m_Problems.Enqueue(p);
             for(int i = 0; i < 3; ++i)
             {
-                BeatNote bn = (Instantiate(this.m_ObjectNote, this.m_Canvas.transform) as GameObject).GetComponent<BeatNote>();
+                BeatNote bn = (Instantiate(this.m_NoteObject, this.m_Canvas.transform) as GameObject).GetComponent<BeatNote>();
                 bn.Data = p.Choices[i].Choice;
                 bn.Speed = 45.0f;
                 bn.Answer = p.Answer;

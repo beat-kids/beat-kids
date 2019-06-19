@@ -469,12 +469,12 @@ Prefab:
     - target: {fileID: 224814878573798256, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224964780113295850, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114131028617010262, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
@@ -6351,12 +6351,12 @@ Prefab:
     - target: {fileID: 224814878573798256, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224964780113295850, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114131028617010262, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
@@ -6773,12 +6773,12 @@ Prefab:
     - target: {fileID: 224964780113295850, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224814878573798256, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114131028617010262, guid: 84f2a17dae6078a4f9c9301b02708029,
         type: 2}
@@ -11622,13 +11622,13 @@ GameObject:
   - component: {fileID: 1311474025}
   - component: {fileID: 1311474024}
   - component: {fileID: 1311474027}
-  m_Layer: 2
+  m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1311474023
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11636,7 +11636,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1311474022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 600}
+  m_LocalPosition: {x: 0, y: 0, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2071153716}

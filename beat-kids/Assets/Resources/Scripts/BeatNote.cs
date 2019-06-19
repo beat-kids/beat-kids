@@ -8,7 +8,7 @@ public class BeatNote : MonoBehaviour
     static public float g_DistanceLimitToCenter = float.NaN;
 
     public BeatLaneUI m_Lane = null;
-    public GameManager m_GameManager = null;
+    public NoteManager m_NoteManager = null;
 
     private Text m_Display = null;
 
@@ -19,6 +19,12 @@ public class BeatNote : MonoBehaviour
     }
 
     public float Speed
+    {
+        get;
+        set;
+    }
+
+    public string Answer
     {
         get;
         set;
@@ -47,8 +53,7 @@ public class BeatNote : MonoBehaviour
         if ((x_distance_from_center <= g_DistanceLimitToCenter) &&
             (y_distance_from_center <= g_DistanceLimitToCenter))
         {
-            this.m_Lane.PopNote(this);
-            this.m_GameManager.LoseHP();
+            this.m_NoteManager.PopFront("");
         }
     }
 }

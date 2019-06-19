@@ -29,21 +29,19 @@ public class GameManager : MonoBehaviour
     {
         this.m_ResultPanel.SetActive(true);
         Time.timeScale = 0.0f;
+
+        this.UpdateRecord();
     }
 
     public void LoseHP()
     {
         this.ClearCombo();
         this.m_HPValue -= this.m_Damage;
+        this.m_HPBar.fillAmount = this.m_HPValue * 0.01f;
         if (this.m_HPValue <= 0)
         {
-            this.m_HPBar.fillAmount = this.m_HPValue * 0.01f;
             m_GameOverImage.gameObject.SetActive(true);
             m_GameOverImage.GetComponent<Animator>().SetBool("isGameOver", true);
-        }
-        else
-        {
-            this.m_HPBar.fillAmount = this.m_HPValue * 0.01f;
         }
     }
 
@@ -81,5 +79,18 @@ public class GameManager : MonoBehaviour
     {
         this.m_ComboValue = 0;
         this.m_ComboText.text = this.m_ComboValue.ToString();
+    }
+
+    private void UpdateRecord()
+    {
+        string mode = PlayerPrefs.GetString("Mode");
+        int index = PlayerPrefs.GetInt("MusicIndex");
+        string difficulty = PlayerPrefs.GetString("Difficulty");
+        string key = mode + "." + index.ToString() + "." + difficulty;
+        int prev = PlayerPrefs.GetInt(key);
+        if (this.m_ScoreValue > prev)
+        {
+            PlayerPrefs.SetInt(key, this.m_ScoreValue);
+        }
     }
 }

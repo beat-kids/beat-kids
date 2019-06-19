@@ -14,10 +14,15 @@ public class GameManager : MonoBehaviour
     public Image m_HPBar = null;
     public Image m_GameOverImage = null;
     public NoteManager m_NoteManager = null;
+    public Text m_ResultScoreText = null;
+    public Text m_ResultComboText = null;
+    public Text m_ResultRatioText = null;
 
     private int m_HPValue = 100;
     private int m_ScoreValue = 0;
     private int m_ComboValue = 0;
+    private int m_CountRight = 0;
+    private int m_CountWrong = 0;
 
     public void GameOver()
     {
@@ -28,13 +33,16 @@ public class GameManager : MonoBehaviour
     public void OpenResultPanel()
     {
         this.m_ResultPanel.SetActive(true);
-        Time.timeScale = 0.0f;
-
+        this.m_ResultScoreText.text = this.m_ScoreText.text;
+        this.m_ResultComboText.text = this.m_ComboText.text;
+        this.m_ResultRatioText.text = this.m_CountRight.ToString() + "/" + this.m_CountWrong.ToString();
         this.UpdateRecord();
+        Time.timeScale = 0.0f;
     }
 
     public void LoseHP()
     {
+        this.m_CountWrong += 1;
         this.ClearCombo();
         this.m_HPValue -= this.m_Damage;
         this.m_HPBar.fillAmount = this.m_HPValue * 0.01f;
@@ -47,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     public void GetScore()
     {
+        this.m_CountRight += 1;
         this.m_ScoreValue += 100;
         this.m_ScoreText.text = this.m_ScoreValue.ToString();
     }

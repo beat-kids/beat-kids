@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Resources/Scenes/Instructor.unity
     guid: fb83613ef5b74134aa09c3c021dd1097
   - enabled: 1
-    path: Assets/Resources/Scenes/ModeSelect.unity
+    path: Assets/Resources/Scenes/SelectMode.unity
     guid: 270428a49e9047e4db06db24bfb54552
+  - enabled: 1
+    path: Assets/Resources/Scenes/SelectMusic.unity
+    guid: b0009096d4930a44b95f7709cb0e5f23
   m_configObjects: {}

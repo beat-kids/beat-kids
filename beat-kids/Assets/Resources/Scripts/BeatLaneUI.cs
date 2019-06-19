@@ -14,6 +14,18 @@ public class BeatLaneUI : MonoBehaviour
     private List<BeatNote> m_Notes = null;
     private BeatLaneUI[] m_Lanes = null;
 
+    public BeatNote GetFirstNote()
+    {
+        if (this.m_Notes.Count > 0)
+        {
+            return this.m_Notes[0];
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     public void PushNote(BeatNote _bn, float _offset)
     {
         Vector3 positionOrigin = this.m_Button.transform.position;
@@ -22,7 +34,6 @@ public class BeatLaneUI : MonoBehaviour
         _bn.transform.position = positionTarget;
         _bn.transform.SetParent(this.transform);
         _bn.m_Lane = this;
-        _bn.m_GameManager = this.m_GameManager;
 
         this.m_Notes.Add(_bn);
     }

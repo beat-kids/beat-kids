@@ -14,25 +14,14 @@ public class GameManager : MonoBehaviour
     public GameObject m_MenuPanel = null;
     public GameObject m_ResultPanel = null;
     public Image m_HPBar = null;
-    public Image gameOver = null;
+    public Image m_GameOverImage = null;
+    public NoteManager m_NoteManager = null;
 
     private GameObject m_Canvas = null;
     private System.Random m_Random = null;
     private int m_HPValue = 100;
     private int m_ScoreValue = 0;
     private int m_ComboValue = 0;
-    private int m_CountDamage = 0;
-
-    public void SpawnNotes()
-    {
-        foreach(BeatLaneUI bls in this.m_Lanes)
-        {
-            BeatNote bn = (Instantiate(this.m_ObjectNote, this.m_Canvas.transform) as GameObject).GetComponent<BeatNote>();
-            bn.Data = this.m_Random.Next(1, 10).ToString();
-            bn.Speed = 45.0f;
-            bls.PushNote(bn, 150.0f);
-        }
-    }
 
     public void GameOver()
     {
@@ -40,25 +29,25 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("SelectMusic");
     }
 
+    public void OpenResultPanel()
+    {
+        this.m_ResultPanel.SetActive(true);
+        Time.timeScale = 0.0f;
+    }
+
     public void LoseHP()
     {
         this.ClearCombo();
-
-        this.m_CountDamage += 1;
-        if (this.m_CountDamage == this.m_Lanes.Length)
+        this.m_HPValue -= this.m_Damage;
+        if (this.m_HPValue <= 0)
         {
-            this.m_CountDamage = 0;
-            this.m_HPValue -= this.m_Damage;
-            if (this.m_HPValue <= 0)
-            {
-                this.m_HPBar.fillAmount = this.m_HPValue * 0.01f;
-                gameOver.transform.position = new Vector3(0, 0, 0);
-                gameOver.GetComponent<Animator>().SetBool("isGameOver", true);
-            }
-            else
-            {
-                this.m_HPBar.fillAmount = this.m_HPValue * 0.01f;
-            }
+            this.m_HPBar.fillAmount = this.m_HPValue * 0.01f;
+            m_GameOverImage.gameObject.SetActive(true);
+            m_GameOverImage.GetComponent<Animator>().SetBool("isGameOver", true);
+        }
+        else
+        {
+            this.m_HPBar.fillAmount = this.m_HPValue * 0.01f;
         }
     }
 
@@ -103,11 +92,5 @@ public class GameManager : MonoBehaviour
     {
         this.m_ComboValue = 0;
         this.m_ComboText.text = this.m_ComboValue.ToString();
-    }
-
-    public void OpenResultPanel()
-    {
-        this.m_ResultPanel.SetActive(true);
-        Time.timeScale = 0.0f;
     }
 }
